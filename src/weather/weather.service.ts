@@ -8,7 +8,7 @@ import * as xml2js from 'xml2js'; // Add this line
 export class WeatherService {
   constructor(private httpService: HttpService) {}
 
-  async getWeatherData() {
+  async getWeatherData(nx: string, ny: string) {
     const keys =
       'S0qf+UB531+t1UKeTsetlCgcznr8Uhnhht8IpVqzVU2IR8eQwydy+dB31jactAOyiWYZQtQGRKB/OLQcKx10Ug==';
     const url =
@@ -20,8 +20,8 @@ export class WeatherService {
       dataType: 'XML',
       base_date: moment().format('YYYYMMDD'),
       base_time: '0600',
-      nx: '55',
-      ny: '127',
+      nx: nx,
+      ny: ny,
     };
 
     const response$ = this.httpService.get(url, { params });
