@@ -19,7 +19,7 @@ export class WeatherService {
       numOfRows: '1000',
       dataType: 'XML',
       base_date: moment().format('YYYYMMDD'),
-      base_time: '0600',
+      base_time: '0630',
       nx: nx,
       ny: ny,
     };
@@ -65,9 +65,8 @@ export class WeatherService {
     // 값 가져오기
     const weatherData = {};
     for (const item of itemData) {
-      const fcstDate = item['fcstDate'];
       const fcstTime = item['fcstTime'];
-      const key = `${fcstDate}-${fcstTime}`;
+      const key = `${fcstTime}`;
 
       if (!(key in weatherData)) {
         weatherData[key] = {};
