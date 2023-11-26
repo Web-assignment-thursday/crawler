@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 import * as moment from 'moment';
-import * as xml2js from 'xml2js'; // Add this line
+import * as xml2js from 'xml2js';
 
 @Injectable()
 export class WeatherService {
@@ -19,7 +19,7 @@ export class WeatherService {
       numOfRows: '60',
       dataType: 'XML',
       base_date: moment().format('YYYYMMDD'),
-      base_time: moment().format('HH') + '30',
+      base_time: moment().format('HH') + '00',
       nx: nx,
       ny: ny,
     };
@@ -128,6 +128,16 @@ export class WeatherService {
       }
     }
 
-    return weatherData;
+    function sortObjectByKeys(obj) {
+      const sortedKeys = Object.keys(obj).sort();
+      const sortedObj = {};
+      for (let key of sortedKeys) {
+        sortedObj[key] = obj[key];
+      }
+      return sortedObj;
+    }
+
+    const sortedWeatherData = sortObjectByKeys(weatherData);
+    return sortedWeatherData;
   }
 }
