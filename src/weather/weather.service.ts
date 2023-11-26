@@ -16,7 +16,7 @@ export class WeatherService {
     const params = {
       serviceKey: keys,
       pageNo: '1',
-      numOfRows: '1000',
+      numOfRows: '60',
       dataType: 'XML',
       base_date: moment().format('YYYYMMDD'),
       base_time: '0630',
