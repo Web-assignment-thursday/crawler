@@ -19,7 +19,7 @@ export class WeatherService {
       numOfRows: '60',
       dataType: 'XML',
       base_date: moment().format('YYYYMMDD'),
-      base_time: '0630',
+      base_time: moment().format('HH') + '30',
       nx: nx,
       ny: ny,
     };
